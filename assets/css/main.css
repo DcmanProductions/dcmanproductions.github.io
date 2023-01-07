@@ -49,6 +49,7 @@ nav .brand img {
     justify-content: center;
     box-shadow: 0 0 15px 5px black;
     margin-bottom: -30vh;
+    width: inherit;
 }
 
 .landing::before {
