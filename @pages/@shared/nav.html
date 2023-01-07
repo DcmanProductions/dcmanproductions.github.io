@@ -1,0 +1,18 @@
+<nav class="animated">
+    <span class="brand"><img src="/assets/images/logo.svg" alt="LFInteractive" height="20%"></span>
+    <nav-items class="centered">
+        <div class="nav-item" onclick="Navigate('home')">Home</div>
+        <dropdown class="nav-item">
+            <dropdown-name>Projects</dropdown-name>
+            <dropdown-body>
+                <dropdown-item onclick="Navigate('projects', 'web')">Web</dropdown-item>
+                <dropdown-item onclick="Navigate('projects', 'mobile')">Mobile</dropdown-item>
+                <dropdown-item onclick="Navigate('projects', 'desktop')">Desktop</dropdown-item>
+                <dropdown-item onclick="Navigate('projects', 'library')">Library</dropdown-item>
+            </dropdown-body>
+        </dropdown>
+    </nav-items>
+    <nav-items class="right">
+        <a class="btn primary gradient" href="https://github.com/dcmanproductions"> <i class="fa-brands fa-github"></i> GitHub</a>
+    </nav-items>
+</nav>
