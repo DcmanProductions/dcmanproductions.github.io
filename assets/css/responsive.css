@@ -80,6 +80,9 @@
     nav .brand{
         display: none;
     }
+    footer{
+        font-size: .75rem;
+    }
 }
 
 @media (max-width: 330px) {
