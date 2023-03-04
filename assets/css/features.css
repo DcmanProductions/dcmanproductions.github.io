@@ -28,11 +28,11 @@
 }
 
 #features #point-of-sale.feature::before {
-    --img: url('/assets/img/point-of-sale.png');
+    --img: url('/assets/img/point-of-sale.webp');
 }
 
 #features #online-ordering.feature::before {
-    --img: url('/assets/img/online-ordering.png');
+    --img: url('/assets/img/online-ordering.webp');
 }
 
 #features .feature::before {
@@ -98,10 +98,3 @@
     font-size: 3.75rem;
     font-weight: 600;
 }
-
-/* @keyframes move-to-selected {
-    0%{
-
-    },
-    
-} */
