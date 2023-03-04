@@ -6,57 +6,236 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LFInteractive</title>
-    <script src="@libraries/jquery.js"></script>
-    <script src="@libraries/blipjs/js/events.min.js"></script>
-    <link rel="stylesheet" href="@libraries/fontawesome/css/all.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/main.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/nav.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/popup.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/animations.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/button.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/dropdown.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/colorpicker.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/toggle.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/panel.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/slider.min.css">
-    <link rel="stylesheet" href="@libraries/blipjs/css/video.min.css">
 
-    <link rel="shortcut icon" href="/assets/images/logo.svg" type="image/x-icon">
-    <link rel="stylesheet" href="/assets/css/main.min.css">
-    <link rel="stylesheet" href="/assets/css/responsive.min.css">
+    <!-- Metadata -->
+    <link rel="shortcut icon" href="/assets/img/logo.svg" type="image/x-icon">
 
-    <meta property="og:image" content="/assets/images/logo.svg">
-    <meta property="og:image:alt" content="/assets/images/logo.png">
-    <meta property="og:title" content="LFInteractive" />
-    <meta property="og:description" content="For a simpler experience" />
-    <meta property="og:image:width" content="512" />
-    <meta property="og:image:height" content="512" />
+    <!-- Site Styles -->
+    <link rel="stylesheet" href="/assets/css/min/main.min.css">
+    <link rel="stylesheet" href="/assets/css/min/scrollbar.min.css">
+    <link rel="stylesheet" href="/assets/css/min/nav.min.css">
+    <link rel="stylesheet" href="/assets/css/min/links.min.css">
+    <link rel="stylesheet" href="/assets/css/min/home.min.css">
+    <link rel="stylesheet" href="/assets/css/min/features.min.css">
+    <link rel="stylesheet" href="/assets/css/min/services.min.css">
+    <link rel="stylesheet" href="/assets/css/min/responsive.min.css">
 
-    <script src="/assets/js/git.js"></script>
-    <script src="/@libraries/showdown.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/assets/libraries/fontawesome/css/all.min.css">
+    <!-- jQuery -->
+    <script src="/assets/libraries/jquery.js"></script>
+</head>
+
 <body>
-    <page-item page="nav"></page-item>
+    <nav>
+        <a title="Go Home" href="/" id="brand"><img src="/assets/img/logo.svg" alt=""></a>
+        <div id="nav-items" class="row">
+            <a href="/" class="nav-item" selected title="Go Home">Home</a>
+            <a href="/clients" class="nav-item" title="Go to the client page">Our Work</a>
+            <a href="/about" class="nav-item" title="Go to the about us page">About</a>
+        </div>
+        <div id="nav-buttons">
+            <a href="#contact-us" class="btn primary" title="Scroll to the 'Get a quote' section">Get Quote</a>
+            <a href="/client-portal" class="btn secondary" title="Go to the client portal page"><i class="fa-solid fa-user"></i><span class="text">Client Portal</span></a>
+        </div>
+    </nav>
+    <section id="landing" class="col">
+        <h1>LfInteractive</h1>
+        <h2>bring your brand to the age of the internet</h2>
+        <div id="landing-cta" class="row">
+            <a href="#contact-us" class="btn primary" title="Scroll to the 'Get a quote' section">Get Started</a>
+            <a href="/clients" class="btn secondary" title="Go to the client page">Our Client List</a>
+        </div>
+        <img src="/assets/img/scroll-indicator.svg" alt="" id="scroll-indicator" title="Scroll to content">
+    </section>
+
+    <section id="services" class="row">
+        <div class="watermark">services</div>
+        <div class="col">
+            <h3>Web Design</h3>
+            <p>Are you looking for a website for your business? Maybe you have a website that is a bit out dated or just isn’t working for you. If so, I’m sure we can find something that is a better fit for you’re business and brand.</p>
+            <a href="/services#web-design" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
+        </div>
+        <div class="col">
+            <h3>Branding</h3>
+            <p>Is your business’s brand needing a facelift? Maybe it worked for you when you were smaller, but now you’ve out grown it?
+                Well you’ve come to the right place, at LFInteractive we specialize in bringing your brand to the internet age, while still preserving your roots.</p>
+            <a href="/services#branding" class="btn secondary" title="Learn more about how we handle your brand">Learn More</a>
+        </div>
+        <div class="col">
+            <h3>Marketing</h3>
+            <p>Does your business need to reach a larger audience? We are well versed in internet advertisements, including <b>Google AdSense</b> with banner ads and YouTube pre-roll ads. We will come to you and record a professional advertisement that can reach thousands of new customers.</p>
+            <a href="/services#marketing" class="btn secondary" title="Learn more about how we handle marketing">Learn More</a>
+        </div>
+    </section>
+
+    <section id="features">
+
+        <div id="live-chatbot" class="feature col" index="0">
+            <h2 class="title">LIVE Chatbot</h2>
+            <p class="description short">Live chatbots are a great way for your customers to ask questions without needing to hire a call center.</p>
+            <p class="description long">We understand that most companies can’t afford to hire a call center to handle customers questions. Now you don’t have to, we can create a <b>LIVE Chat</b> bubble on your site where users can ask questions and get immediate responses. This bot can also do tasks for the customer.
+                Is the customer waiting for a package to arrive, they can just ask <b><i>“Where is my package”</i></b> and the bot can look at they’re current orders and say <i><b>“Your package is currently in Boston MA and will arrive Thursday, March 4th around 4 P.M.”</b></i> .
+            </p>
+            <div class="row">
+                <a href="#contact-us" class="btn primary" title="Scroll to the 'Get a quote' section">Check it Out</a>
+                <div class="btn secondary">Learn More</div>
+            </div>
+        </div>
+        <div id="point-of-sale" class="feature col" index="1">
+            <h2 class="title">Point of Sale</h2>
+            <p class="description short">We can create a beautiful and easy to use POS system for use both by the customer online or the employee in-store</p>
+            <p class="description long">We can create a beautiful and easy to use POS system for use both by the customer online or the employee in-store </p>
+            <div class="row">
+                <a href="#contact-us" class="btn primary" title="Scroll to the 'Get a quote' section">Check it Out</a>
+                <div class="btn secondary">Learn More</div>
+            </div>
+        </div>
+        <div id="online-ordering" class="feature col" index="2">
+            <h2 class="title">Online Ordering</h2>
+            <p class="description short">Your customers and employee’s will be in sync with simple, one-click ordering and booking!</p>
+            <p class="description long">Your customers and employee’s will be in sync with simple, one-click ordering and booking!</p>
+            <div class="row">
+                <a href="#contact-us" class="btn primary" title="Scroll to the 'Get a quote' section">Check it Out</a>
+                <div class="btn secondary">Learn More</div>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="what-do-you-think-banner" class="banner center col">
+        <h2>What do you think?</h2>
+        <p>Get started with your new brand identity today</p>
+        <a href="#contact-us" class="btn primary">Get Started</a>
+    </section>
+
+    <section id="statistics">
+        <div class="stat-card" style="background-image: url('/assets/img/72-hours.webp')">
+            <i class="fa-solid fa-calendar-day"></i>
+            <p class="title">72</p>
+            <p class="subtitle">hours</p>
+            <p class="extra">The average project takes<br>around 72 hours.</p>
+        </div>
+        <div class="stat-card" style="background-image: url('/assets/img/money-per-hour.webp')">
+            <i class="fa-solid fa-money-bill-1-wave"></i>
+            <p class="title">$120</p>
+            <p class="subtitle">per hour</p>
+            <p class="extra">Affordable, industry standard pricing</p>
+        </div>
+        <div class="stat-card" style="background-image: url('/assets/img/rating.webp')">
+            <i class="fa-solid fa-face-smile"></i>
+            <p class="title">10/10</p>
+            <p class="subtitle">rating</p>
+            <p class="extra">What our customers are saying!</p>
+        </div>
+    </section>
 
 
-    <main></main>
+    <section id="reviews" class="row">
+        <div class="watermark">reviews</div>
+        <div class="reviews-slider row">
+            <div class="col review">
+                <h3>Site #1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
+                <div class="review-score">
+                    <span class="review-pill full"></span>
+                    <span class="review-pill full"></span>
+                    <span class="review-pill full"></span>
+                    <span class="review-pill half"></span>
+                    <span class="review-pill empty"></span>
+                </div>
+                <div class="row" id="review-buttons">
+                    <a href="#" class="btn primary">Visit Site</a>
+                    <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
+                </div>
+            </div>
+            <div class="col review">
+                <h3>Site #1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
+                <div class="review-score">
+                    <span class="review-pill full"></span>
+                    <span class="review-pill full"></span>
+                    <span class="review-pill full"></span>
+                    <span class="review-pill half"></span>
+                    <span class="review-pill empty"></span>
+                </div>
+                <div class="row" id="review-buttons">
+                    <a href="#" class="btn primary">Visit Site</a>
+                    <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
+                </div>
+            </div>
+            <div class="col review">
+                <h3>Site #1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
+                <div class="review-score">
+                    <span class="review-pill full"></span>
+                    <span class="review-pill full"></span>
+                    <span class="review-pill full"></span>
+                    <span class="review-pill half"></span>
+                    <span class="review-pill empty"></span>
+                </div>
+                <div class="row" id="review-buttons">
+                    <a href="#" class="btn primary">Visit Site</a>
+                    <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
+                </div>
+            </div>
+            <div class="col review">
+                <h3>Site #1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
+                <div class="review-score">
+                    <span class="review-pill full"></span>
+                    <span class="review-pill full"></span>
+                    <span class="review-pill full"></span>
+                    <span class="review-pill half"></span>
+                    <span class="review-pill empty"></span>
+                </div>
+                <div class="row" id="review-buttons">
+                    <a href="#" class="btn primary">Visit Site</a>
+                    <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        LFInteractive LLC. &copy; 2020 -
-        <script>document.write(new Date().getFullYear())</script> All Rights Reserved.
+
+    <section id="hosting-domains" class="banner center col">
+        <h2>Hosting & Domains</h2>
+        <p>Ask us about our hosting and domain services!</p>
+        <div class="row">
+            <a href="#contact-us" class="btn primary">Get Started</a>
+            <a href="/services#hosting-domains" class="btn secondary">Learn More</a>
+        </div>
+    </section>
+
+    <section id="contact-us" class="center">
+        <div class="watermark">quote</div>
+        <div class="row">
+            <img src="/assets/img/make-a-phone-call.webp" alt="">
+            <div class="form col">
+                <h3>Request a Quote</h3>
+                <label for="name">Full Name*</label>
+                <input type="text" id="name" name="name" placeholder="John Doe" autocomplete="name" required>
+                <label for="current-website">Current Website</label>
+                <input type="text" id="current-website" name="current-website" placeholder="https://www.example.com">
+                <label for="email">Email*</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="john.doe@example.com">
+                <label for="phone">Phone*</label>
+                <input type="text" id="phone" name="phone" placeholder="+1 (123) 456-7890" autocomplete="mobile">
+                <label for="fname">Company / Org Name*</label>
+                <input type="text" id="fname" name="fname" placeholder="ABC Company">
+                <p>( * ) required field</p>
+                <div class="btn primary">Get Quote</div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="center">
+        lfinteractive llc. 2020-<span class="year"></span>
     </footer>
 
-    <script src="@libraries/blipjs/js/main.min.js"></script>
-    <script src="@libraries/blipjs/js/loadingscreen.min.js"></script>
-    <script src="@libraries/blipjs/js/navigation.min.js"></script>
-    <script src="@libraries/blipjs/js/dropdown.min.js"></script>
-    <script src="@libraries/blipjs/js/popup.min.js"></script>
-    <script src="@libraries/blipjs/js/links.min.js"></script>
-    <script src="@libraries/blipjs/js/slider.min.js"></script>
-    <script src="@libraries/blipjs/js/video.min.js"></script>
-    <script src="@libraries/blipjs/js/toggle.min.js"></script>
-    <script src="@libraries/blipjs/js/colorpicker.min.js"></script>
-    <script src="@libraries/blipjs/js/util.min.js"></script>
-    <script src="@libraries/blipjs/js/file.min.js"></script>
+    <script src="/assets/js/features.js"></script>
+    <script src="/assets/js/min/nav.min.js"></script>
+    <script src="/assets/js/min/lf.min.js"></script>
 </body>
 
 </html>

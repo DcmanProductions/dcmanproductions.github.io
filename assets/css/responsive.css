@@ -1,101 +1,113 @@
-@media (max-width: 1420px) {
-    .landing-panel {
-        transform: scale(.75);
-        margin: 0;
+@media (max-width: 1800px) {
+    #statistics .stat-card p.title {
+        font-size: 5rem;
+        margin-bottom: 0rem;
+        line-height: 3rem;
+        margin-top: 6rem;
+    }
+
+    #statistics .stat-card p.subtitle {
+        font-size: 2.5rem;
     }
 }
 
-@media (max-width: 1130px) {
-    #panel-items {
-        flex-direction: column;
-        width: 100%;
+@media (max-width: 1570px) {
+    #statistics .stat-card p.title {
+        font-size: 3rem;
+        margin-bottom: 0rem;
+        line-height: 3rem;
+        margin-top: 3rem;
     }
 
-    .landing-panel {
-        min-width: 100%;
-        background: transparent !important;
-        box-shadow: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-bottom: 4px solid var(--background-lighter);
-        border-radius: 0 !important;
-
-    }
-
-    .landing-panel img {
-        display: none;
-    }
-
-    .landing {
-        height: calc(70vh - 200px);
-        min-height: 300px;
+    #statistics .stat-card p.subtitle {
+        font-size: 1.5rem;
         margin-bottom: 0;
     }
 
-    .landing h1 {
-        font-size: 4rem;
-        font-weight: 900;
-    }
-
-    .landing h2 {
-        font-size: 2rem;
-        font-weight: 500;
-    }
-
-    #search {
-        margin-top: 30px;
-    }
-
-    #search input[type="text"] {
-        font-size: 1rem;
+    #statistics .stat-card i {
+        display: none;
     }
 }
 
-@media (max-width: 600px) {
-    nav nav-items .btn.primary.gradient {
-        display: none;
+
+@media (max-width: 1500px) {
+    nav {
+        max-width: 100%;
+        left: 0;
+        top: 0;
     }
 
-    .landing h1 {
+    nav[collapsed=true] #nav-items, nav #nav-items {
+        max-width: 95%;
+    }
+
+    nav[collapsed=true] #nav-buttons, nav #nav-buttons {
+        right: 3%;
+    }
+
+    nav[collapsed=true] #brand, nav #brand {
+        left: 3%;
+        z-index: 1;
+        max-height: 75px;
+    }
+}
+
+@media (max-width: 1250px) {
+    #statistics {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #statistics .stat-card {
+        margin: 2rem 0;
+        background-color: #1c1c1c;
+        background-image: none !important;
+        border-radius: 20px;
+        width: 100%;
+        height: auto;
+        padding: 2rem 0;
+        aspect-ratio: unset;
+    }
+
+    #statistics .stat-card p.title {
         font-size: 3rem;
-        font-weight: 900;
+        margin-bottom: 0rem;
+        line-height: 1rem;
+        margin-top: 0;
     }
 
-    .landing h2 {
-        font-size: 1rem;
-        font-weight: 400;
+    #statistics .stat-card p.subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 0;
     }
 }
 
-@media (max-width: 430px) {
-    .landing h1 {
+@media (max-width: 1056px) {
+    nav #nav-buttons {
+        bottom: 15%;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    nav #nav-buttons .btn{
+        width: 25%;
+    }
+
+    nav {
+        overflow: hidden;
+        max-height: 100%;
+        height: 100%;
+    }
+
+    nav #nav-items {
+        height: 90%;
+        flex-direction: column;
         font-size: 2rem;
-        font-weight: 900;
     }
 
-    .landing h2 {
-        font-size: 1rem;
-        font-weight: 400;
-    }
-    nav .brand{
-        display: none;
-    }
-    footer{
-        font-size: .75rem;
-    }
-}
-
-@media (max-width: 330px) {
-    .landing h1 {
-        font-size: 2rem;
-        font-weight: 900;
-    }
-
-    .landing h2 {
-        font-size: 1rem;
-        font-weight: 400;
-    }
-    nav .brand{
-        display: none;
+    nav #nav-items .nav-item {
+        margin: 2rem;
     }
 }

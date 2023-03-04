@@ -1,8 +1,4 @@
 {
-    "cSpell.words": [
-        "tabindex"
-    ],
-    // "es6-css-minify.cssMinPath": "min",
-    // "es6-css-minify.jsMinPath": "min",
-    "liveServer.settings.port": 5501
+    "es6-css-minify.cssMinPath": "/assets/css/min",
+    "es6-css-minify.jsMinPath": "\\assets\\js\\min"
 }

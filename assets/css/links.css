@@ -1,0 +1,30 @@
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+.btn {
+    color: black;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    text-align: center;
+    border-radius: 100px;
+    text-transform: capitalize;
+    box-shadow: 0 0 0 0 transparent;
+    transition: background, transform, filter, box-shadow;
+    transition-duration: 200ms;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: var(--primary);
+}
+
+.btn.secondary {
+    background: white;
+}
+
+.btn:hover {
+    filter: brightness(.9);
+    transform: scale(1.01);
+}
