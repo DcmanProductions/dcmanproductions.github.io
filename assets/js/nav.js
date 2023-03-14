@@ -4,10 +4,20 @@
     updateNav();
 
 
-    $("#scroll-indicator").on('click', () => {
+    $("#scroll-indicator").click(() => {
         // It scrolls the window by the height of the screen minus 200px. 
         window.scrollBy(0, window.screen.availHeight - 200);
     });
+
+    $("#mobile-toggle").click(() => {
+        let expand = nav.attr('mobile-expand') != "true";
+        nav.attr('mobile-expand', expand)
+        if (expand) {
+            $("body").css('overflow', "hidden")
+        }else{
+            $("body").css('overflow', "")
+        }
+    })
 
 
     /**
