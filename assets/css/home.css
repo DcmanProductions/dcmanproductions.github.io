@@ -186,6 +186,14 @@
     background-color: var(--primary);
 }
 
+.review p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 #review-buttons .btn {
     min-width: 100px;
 }
@@ -201,9 +209,11 @@
 .form {
     margin: auto;
 }
-.form h3{
+
+.form h3 {
     margin: 0;
 }
+
 .form input {
     width: 75%;
     border-radius: 100px;
@@ -214,7 +224,8 @@
     margin-left: 25%;
     position: relative;
 }
-.form input:focus{
+
+.form input:focus {
     outline: 1px solid var(--primary);
 }
 
@@ -234,14 +245,15 @@
     opacity: .2;
     font-weight: 900;
 }
-.form p{
+
+.form p {
     text-transform: capitalize;
     font-style: italic;
     font-weight: 400;
     margin: 1rem;
 }
 
-footer{
+footer {
     text-transform: uppercase;
     opacity: .5;
     padding: 3rem;
