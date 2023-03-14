@@ -130,6 +130,10 @@
 }
 
 @media (max-width: 1056px) {
+
+    #landing {
+        background-image: url('/assets/img/background_md.jpg');
+    }
     nav #nav-buttons {
         bottom: 15%;
         left: 0;
@@ -324,6 +328,9 @@
 }
 
 @media (max-width: 530px) {
+    #landing {
+        background-image: url('/assets/img/background_sm.avif');
+    }
     #landing h1 {
         font-size: 3rem;
     }
