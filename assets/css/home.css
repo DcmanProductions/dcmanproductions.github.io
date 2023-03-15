@@ -200,63 +200,127 @@
     min-width: 100px;
 }
 
-#contact-us {
-    margin: 7rem 3rem !important;
-}
 
-#contact-us>* {
+#services {
     width: 100%;
 }
 
-.form {
-    margin: auto;
-}
-
-.form h3 {
+#services h3 {
     margin: 0;
 }
 
-.form input {
-    width: 75%;
-    border-radius: 100px;
-    background-color: #252525;
-    border: none;
-    color: white;
-    padding: 1rem 4rem;
-    margin-left: 25%;
+#services .col {
+    height: 100%;
+    width: 100%;
+    margin: 0 2rem;
+}
+
+#services .col p {
+    height: 100%;
+}
+
+#services .col .btn {
+    width: 200px;
+    margin: 1rem 0;
+}
+
+#features {
     position: relative;
+    height: calc(282px + 4rem + 400px);
 }
 
-.form input:focus {
-    outline: 1px solid var(--primary);
+#features .feature {
+    position: absolute;
+    overflow: hidden;
+    margin: 2rem;
+    padding: 2rem;
+    border-radius: 36px;
+    height: 100%;
+    max-height: 282px;
+    top: calc(400px + 8rem);
+    --width: 50%;
+    width: 100%;
+    max-width: calc(var(--width) - 8rem);
+    transition: top 1s 0s, left 1s 0s, max-width 1s 0s, max-height 1s 0s;
 }
 
-.form label {
-    background-color: var(--primary);
-    border-radius: 100px;
-    color: var(--bg) !important;
-    text-align: center;
-    padding: 1rem;
-    width: 25%;
-    min-width: 200px;
-    transform: translate(-30%, 100%);
-    z-index: 1;
-}
 
-.form input::placeholder {
-    opacity: .2;
-    font-weight: 900;
-}
-
-.form p {
-    text-transform: capitalize;
-    font-style: italic;
-    font-weight: 400;
+#features .feature p, #features .feature h2 {
     margin: 1rem;
 }
 
-footer {
-    text-transform: uppercase;
-    opacity: .5;
-    padding: 3rem;
+#features #live-chatbot.feature::before {
+    --img: url('/assets/img/women-phone-booth.webp');
+}
+
+#features #point-of-sale.feature::before {
+    --img: url('/assets/img/point-of-sale.webp');
+}
+
+#features #online-ordering.feature::before {
+    --img: url('/assets/img/online-ordering.webp');
+}
+
+#features .feature::before {
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    content: '';
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)), var(--img);
+    filter: blur(10px);
+    transition: all .5s;
+}
+
+#features .feature[index="0"]::before {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#features .feature .btn {
+    width: 20%;
+}
+
+#features .feature[index="0"] {
+    max-height: 400px;
+    top: 0;
+    --width: 100%;
+    left: 0;
+    transition: all .5s;
+    z-index: 1;
+}
+
+#features .feature[index="2"] {
+    left: calc(50%);
+}
+
+#features .feature .description {
+    height: 100%;
+}
+
+#features .feature .description.long {
+    display: none;
+}
+
+#features .feature .description.short {
+    display: inline-block;
+}
+
+#features .feature[index="0"] .description.long {
+    display: inline-block;
+}
+
+#features .feature[index="0"] .description.short {
+    display: none;
+}
+
+#features .feature .title {
+    font-size: 3.75rem;
+    font-weight: 600;
 }
