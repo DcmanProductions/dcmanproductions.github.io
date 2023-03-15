@@ -6,16 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LFInteractive - Bring Your Brand to the Age of the Internet</title>
-
-    <!-- Metadata -->
-    <link rel="shortcut icon" href="/assets/img/logo.svg" type="image/x-icon">
-    <meta property="og:title" content="LFInteractive" />
-    <meta property="og:url" content="https://lfinteractive.net" />
-    <meta property="og:image" content="https://lfinteractive.net/assets/img/social-icon.jpeg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:description" content="Bring Your Brand to the Age of the Internet" />
-    <meta property="og:type" content="website" />
-    <meta property="fb:app_id" content="1627094801083161" />
+    <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/meta.php";     ?>
 
     <!-- Site Styles -->
     <link rel="stylesheet" href="/assets/css/min/main.min.css">
@@ -23,9 +14,6 @@
     <link rel="stylesheet" href="/assets/css/min/nav.min.css">
     <link rel="stylesheet" href="/assets/css/min/links.min.css">
     <link rel="stylesheet" href="/assets/css/min/home.min.css">
-    <link rel="stylesheet" href="/assets/css/min/features.min.css">
-    <link rel="stylesheet" href="/assets/css/min/services.min.css">
-    <link rel="stylesheet" href="/assets/css/min/responsive.min.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/assets/libraries/fontawesome/css/all.min.css" media="print" onload="this.media='all'">
@@ -34,19 +22,10 @@
 </head>
 
 <body>
-    <nav>
-        <i id="mobile-toggle" class="fa fa-bars"></i>
-        <a title="Go Home" href="/" id="brand"><img src="/assets/img/logo.svg" alt=""></a>
-        <div id="nav-items" class="row">
-            <a href="/" class="nav-item" selected title="Go Home">Home</a>
-            <a href="/clients" class="nav-item" title="Go to the client page">Our Work</a>
-            <a href="/about" class="nav-item" title="Go to the about us page">About</a>
-        </div>
-        <div id="nav-buttons">
-            <a href="#contact-us" class="btn primary" title="Scroll to the 'Get a quote' section">Get Quote</a>
-            <a href="/client-portal" class="btn secondary" title="Go to the client portal page"><i class="fa-solid fa-user"></i><span class="text">Client Portal</span></a>
-        </div>
-    </nav>
+    <?php
+    $page = 0;
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/assets/php/nav.php";
+    ?>
     <section id="landing" class="col">
         <h1>LfInteractive</h1>
         <h2>bring your brand to the age of the internet</h2>
@@ -215,35 +194,10 @@
         </div>
     </section>
 
-    <section id="contact-us" class="center">
-        <div class="watermark">quote</div>
-        <div class="row">
-            <img src="/assets/img/make-a-phone-call.webp" alt="">
-            <div class="form col">
-                <h3>Request a Quote</h3>
-                <label for="name">Full Name*</label>
-                <input type="text" id="name" name="name" placeholder="John Doe" autocomplete="name" required>
-                <label for="current-website">Current Website</label>
-                <input type="text" id="current-website" name="current-website" placeholder="https://www.example.com">
-                <label for="email">Email*</label>
-                <input type="email" id="email" name="email" autocomplete="email" placeholder="john.doe@example.com">
-                <label for="phone">Phone*</label>
-                <input type="text" id="phone" name="phone" placeholder="+1 (123) 456-7890" autocomplete="mobile">
-                <label for="fname">Company / Org Name*</label>
-                <input type="text" id="fname" name="fname" placeholder="ABC Company">
-                <p class="center">( * ) required field</p>
-                <div class="btn primary">Get Quote</div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="center">
-        lfinteractive llc. 2020-<span class="year"></span>
-    </footer>
+    <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/contact-form.php";    ?>
+    <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/footer.php";    ?>
 
     <script src="/assets/js/min/features.min.js"></script>
-    <script src="/assets/js/min/nav.min.js"></script>
-    <script src="/assets/js/min/lf.min.js"></script>
 </body>
 
 </html>
