@@ -33,6 +33,22 @@
     include_once $_SERVER['DOCUMENT_ROOT'] . "/assets/php/nav.php";
     ?>
     <main>
+        <div class="center">
+            <div id="login-form" class="form col">
+                <h3>Client Login</h3>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" autocomplete="email" placeholder="john.doe@example.com">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" autocomplete="current-password" placeholder="*************">
+                <div class="row">
+                    <toggle id="show-password-toggle">Show Password</toggle>
+                    <toggle id="remember-me-toggle">Remember Me?</toggle>
+                </div>
+                <p>New customer, <a href="/client-portal/register/">register here</a></p>
+                <p class="error"></p>
+                <div class="btn primary">Login</div>
+            </div>
+        </div>
     </main>
 
     <!-- JS Scripts -->
