@@ -8,3 +8,4 @@
 <script src="/assets/js/min/lf.min.js"></script>
 <script src="/assets/js/min/nav.min.js"></script>
 <script src="/assets/js/min/input.min.js"></script>
+<script src="/assets/js/min/lazyloading.min.js"></script>
