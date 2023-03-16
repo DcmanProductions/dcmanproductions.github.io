@@ -14,8 +14,8 @@
             <input type="email" id="email" name="email" autocomplete="email" placeholder="john.doe@example.com">
             <label for="phone">Phone*</label>
             <input type="text" id="phone" name="phone" placeholder="+1 (123) 456-7890" autocomplete="mobile">
-            <label for="fname">Company / Org Name*</label>
-            <input type="text" id="fname" name="fname" placeholder="ABC Company" autocomplete="organization">
+            <label for="orgname">Company / Org Name*</label>
+            <input type="text" id="orgname" name="orgname" placeholder="ABC Company" autocomplete="organization">
             <p class="center">( * ) required field</p>
             <div class="btn primary">Get Quote</div>
         </div>
