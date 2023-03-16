@@ -120,66 +120,43 @@
 
     <section id="reviews" class="row">
         <div class="watermark">reviews</div>
-        <div class="reviews-slider row">
-            <div class="col review">
-                <h3>Site #1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
-                <div class="review-score">
-                    <span class="review-pill full"></span>
-                    <span class="review-pill full"></span>
-                    <span class="review-pill full"></span>
-                    <span class="review-pill half"></span>
-                    <span class="review-pill empty"></span>
-                </div>
-                <div class="row" id="review-buttons">
+        <div class="review-container">
+            <div class="reviews-slider row">
+                <?php
+                for ($i = 0; $i < 30; $i++) {
+                    echo '<div class="col review">
+                    <h3>Site #' . $i . '</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
+                    <div class="review-score">';
+                    $num = rand(2, 5);
+                    for ($j = 0; $j < $num; $j++) {
+                        if ($j == $num - 1) {
+                            $choice = rand(0, 1);
+                            switch ($choice) {
+                                case 0:
+                                    echo '<span class="review-pill full"></span>';
+                                    break;
+                                case 1:
+                                    echo '<span class="review-pill half"></span>';
+                                    break;
+                            }
+                        } else
+                            echo '<span class="review-pill full"></span>';
+                    }
+
+                    for ($j = $num; $j < 5; $j++) {
+                        echo '<span class="review-pill empty"></span>';
+                    }
+
+                    echo '
+                    </div>
+                    <div class="row" id="review-buttons">
                     <a href="#" class="btn primary">Visit Site</a>
                     <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
-                </div>
-            </div>
-            <div class="col review">
-                <h3>Site #1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
-                <div class="review-score">
-                    <span class="review-pill full"></span>
-                    <span class="review-pill full"></span>
-                    <span class="review-pill full"></span>
-                    <span class="review-pill half"></span>
-                    <span class="review-pill empty"></span>
-                </div>
-                <div class="row" id="review-buttons">
-                    <a href="#" class="btn primary">Visit Site</a>
-                    <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
-                </div>
-            </div>
-            <div class="col review">
-                <h3>Site #1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
-                <div class="review-score">
-                    <span class="review-pill full"></span>
-                    <span class="review-pill full"></span>
-                    <span class="review-pill full"></span>
-                    <span class="review-pill half"></span>
-                    <span class="review-pill empty"></span>
-                </div>
-                <div class="row" id="review-buttons">
-                    <a href="#" class="btn primary">Visit Site</a>
-                    <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
-                </div>
-            </div>
-            <div class="col review">
-                <h3>Site #1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
-                <div class="review-score">
-                    <span class="review-pill full"></span>
-                    <span class="review-pill full"></span>
-                    <span class="review-pill full"></span>
-                    <span class="review-pill half"></span>
-                    <span class="review-pill empty"></span>
-                </div>
-                <div class="row" id="review-buttons">
-                    <a href="#" class="btn primary">Visit Site</a>
-                    <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
-                </div>
+                    </div>
+                    </div>';
+                }
+                ?>
             </div>
         </div>
     </section>
@@ -198,6 +175,8 @@
     <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/footer.php";    ?>
 
     <script src="/assets/js/min/features.min.js"></script>
+    <script src="/assets/js/min/reviews.min.js"></script>
+
 </body>
 
 </html>
