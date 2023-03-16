@@ -1,5 +1,6 @@
 #landing {
     text-transform: uppercase;
+    background-color: black;
     background-image: url('/assets/img/background.jpg');
     background-position: center;
     background-size: cover;
@@ -11,10 +12,23 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
 #landing h1, #landing h2 {
     margin: 0;
+}
+
+#landing>* {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity, transform;
+    transition-duration: 500ms;
+}
+
+#landing[loaded]>* {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 #landing h1 {
@@ -25,6 +39,9 @@
 #landing h2 {
     font-size: 3rem;
     font-weight: 500;
+}
+
+#landing[loaded] h2 {
     opacity: .8;
 }
 
@@ -135,11 +152,37 @@
     margin: auto;
 }
 
-.reviews-slider {
-    width: 100%;
-    overflow: scroll;
-    scrollbar-color: transparent transparent !important;
+.review-container {
+    overflow: hidden;
+    /* background-color: red; */
 }
+
+.reviews-slider {
+    --speed: 0s;
+    --width: 0;
+    scroll-behavior: smooth;
+    width: 100%;
+    scrollbar-color: transparent transparent !important;
+    animation-name: scroll;
+    animation-duration: var(--speed);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.reviews-slider:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(var(--width));
+    }
+}
+
 
 .reviews-slider::-webkit-scrollbar-thumb {
     background: transparent;
