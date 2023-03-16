@@ -271,24 +271,24 @@
         width: 90%;
     }
 
-    .form input {
+    input {
         margin-left: 0;
         padding: 1rem;
         position: relative;
         width: calc(100% - 2rem);
     }
 
-    .form label {
+    label {
         background-color: transparent;
         border-radius: 0;
         color: white !important;
         text-align: start;
-        width: 100%;
+        width: fit-content;
         min-width: unset;
         transform: translate(0%, 0%);
     }
 
-    .form input::placeholder {
+    input::placeholder {
         opacity: .2;
         font-weight: 900;
     }
