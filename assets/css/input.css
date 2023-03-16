@@ -15,7 +15,7 @@
     margin: 0;
 }
 
-.form input {
+input {
     border-radius: 100px;
     background-color: #252525;
     border: none;
@@ -25,11 +25,18 @@
     margin-left: 200px;
 }
 
-.form input:focus {
+input:read-only{
+    color: rgba(255, 255, 255, 0.5);
+    cursor: not-allowed;
+}
+input:read-only:focus {
+    outline: none;
+}
+input:focus {
     outline: 1px solid var(--primary);
 }
 
-.form label {
+label {
     background-color: var(--primary);
     border-radius: 100px;
     color: var(--bg) !important;
@@ -40,7 +47,7 @@
     z-index: 1;
 }
 
-.form input::placeholder {
+input::placeholder {
     opacity: .2;
     font-weight: 900;
 }
