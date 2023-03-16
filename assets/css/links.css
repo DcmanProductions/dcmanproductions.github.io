@@ -1,6 +1,10 @@
 a {
-    color: unset;
+    color: var(--primary);
     text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .btn {
