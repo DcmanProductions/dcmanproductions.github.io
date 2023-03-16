@@ -61,20 +61,29 @@ p.error {
 
 .no-select {
     -webkit-user-select: none;
-    /* Safari */
     -ms-user-select: none;
-    /* IE 10 and IE 11 */
     user-select: none;
-    /* Standard syntax */
 }
 
 section:not(#landing) {
     position: relative;
     padding: 7rem 0;
     margin: 7rem 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity, transform;
+    transition-duration: 500ms;
+}
+
+section[loaded] {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 .watermark {
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     position: absolute;
     text-transform: uppercase;
     font-weight: 900;
