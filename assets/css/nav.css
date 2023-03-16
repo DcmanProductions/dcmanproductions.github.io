@@ -8,6 +8,17 @@ nav {
     height: 200px;
     display: flex;
     align-items: center;
+    
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: opacity, transform;
+    transition-duration: 500ms;
+}
+
+nav[loaded]{
+    
+    opacity: 1;
+    transform: translateY(0%);
 }
 
 nav #brand {
@@ -58,6 +69,8 @@ nav #nav-items .nav-item {
     margin: 0 2rem;
     position: relative;
     cursor: pointer;
+    text-decoration: none;
+    color: unset;
 }
 
 nav #nav-items .nav-item::before, nav #nav-items .nav-item::before {
