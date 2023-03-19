@@ -1,5 +1,5 @@
 #contact-us {
-    margin: 7rem 3rem !important;
+    margin: 0 3rem !important;
 }
 
 #contact-us>* {
@@ -25,13 +25,15 @@ input {
     margin-left: 200px;
 }
 
-input:read-only{
+input:read-only {
     color: rgba(255, 255, 255, 0.5);
     cursor: not-allowed;
 }
+
 input:read-only:focus {
     outline: none;
 }
+
 input:focus {
     outline: 1px solid var(--primary);
 }
@@ -45,11 +47,16 @@ label {
     width: 200px;
     transform: translate(0, 100%);
     z-index: 1;
+    cursor: pointer;
 }
 
 input::placeholder {
     opacity: .2;
     font-weight: 900;
+}
+
+input.error {
+    outline: 2px dashed red;
 }
 
 .form p {
@@ -72,7 +79,8 @@ toggle {
     width: fit-content;
     cursor: pointer;
 }
-toggle[disabled]{
+
+toggle[disabled] {
     cursor: not-allowed;
     opacity: .7;
     filter: brightness(.7);
@@ -102,6 +110,6 @@ toggle::after {
     transition: left 200ms;
 }
 
-toggle[value=true]::after{
+toggle[value=true]::after {
     left: calc(2rem - 5px);
 }
