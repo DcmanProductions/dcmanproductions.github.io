@@ -1,5 +1,13 @@
 <!-- A LFInteractive Project -->
-
+<?php
+require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/Authentication.inc.php";
+$auth = new Authentication("lfinteractive");
+$loginData = $auth->LoginCookies();
+$data = json_decode($loginData, true);
+if (isset($data["error"])) {
+    header('location: /client-portal/login');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
