@@ -46,6 +46,7 @@
                 <input type="password" id="auth-token" name="auth-token" autocomplete="off" <?php echo isset($_GET['tok']) ? "readonly" : ""; ?> value="<?php echo isset($_GET['tok']) ? $_GET['tok'] : ""; ?>">
                 <toggle id="show-password-toggle">Show Password</toggle>
                 <p>***<i><u>The Authorization Token is provided by LFInteractive</u></i>***</p>
+                <p>Already have an account, <a href="/client-portal/login/">login here</a></p>
                 <p class="error"></p>
                 <div class="btn primary">Register</div>
             </div>
