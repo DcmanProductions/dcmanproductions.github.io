@@ -1,5 +1,7 @@
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/connection.inc.php";
+
+/* A class that is used to authenticate users. */
 class Authentication
 {
     var $connection = null;
@@ -9,7 +11,7 @@ class Authentication
      * 
      * @param db The database name.
      */
-    function __construct($db)
+    function __construct(string $db)
     {
         /* Creating a new connection to the database. */
         $this->connection = new Connection($db);
@@ -60,6 +62,9 @@ class Authentication
     function LoginCookies(): string
     {
         /* Checking if the user is logged in by checking if the cookies are set. */
+        if (!isset($_COOKIE["auth_username"]) || !isset($_COOKIE["auth_token"])) {
+            return json_encode(["error" => "No authentication cookie was found!"]);
+        }
         $username = $_COOKIE["auth_username"];
         $token = $_COOKIE["auth_token"];
         $sql = "SELECT * FROM users WHERE username = ? LIMIT 1";
@@ -84,6 +89,63 @@ class Authentication
             return json_encode(["error" => "Invalid password or location changed!"]);
         }
     }
+
+    function StaffLoginCookies(): string
+    {
+        /* Checking if the user is logged in by checking if the cookies are set. */
+        if (!isset($_COOKIE["auth_username"]) || !isset($_COOKIE["auth_token"])) {
+            return json_encode(["error" => "No authentication cookie was found!"]);
+        }
+        $username = $_COOKIE["auth_username"];
+        $token = $_COOKIE["auth_token"];
+        $sql = "SELECT * FROM staff WHERE username = ? LIMIT 1";
+        $stmt = $this->connection->conn->prepare($sql);
+        if (!$stmt->bind_param("s", $username)) {
+            return json_encode(["error" => $stmt->error]);
+        }
+
+        /* Checking if the statement executed successfully. If it did not, it returns a JSON string with the error. */
+        if (!$stmt->execute()) {
+            return json_encode(["error" => $stmt->error]);
+        }
+        $result = $stmt->get_result();
+        if ($result->num_rows <= 0) {
+            return json_encode(["error" => "No users found!"]);
+        }
+        /* Checking if the password is correct. */
+        $data = $result->fetch_assoc();
+        if (crypt($data["password"], $_SERVER["REMOTE_ADDR"]) == $token) {
+            /* Returning a JSON string with the data. */
+            return json_encode($data);
+        } else {
+            /* Returning a JSON string with the error. */
+            return json_encode(["error" => "Invalid password or location changed!"]);
+        }
+    }
+    function StaffLogin(string $username, string $password): string
+    {
+        /* Hashing the password with the salt and then comparing it to the hash in the database. */
+        $password = crypt($password, $this->salt);
+        $sql = "SELECT * FROM staff WHERE username = ? AND password = ? LIMIT 1";
+        $stmt = $this->connection->conn->prepare($sql);
+        if (!$stmt->bind_param("ss", $username, $password)) {
+            return json_encode(["error" => $stmt->error]);
+        }
+        /* Checking if the statement executed successfully. If it did not, it returns a JSON string with the error. */
+        if (!$stmt->execute()) {
+            return json_encode(["error" => $stmt->error]);
+        }
+        $result = $stmt->get_result();
+        if ($result->num_rows <= 0) {
+            return json_encode(["error" => "No users found!"]);
+        }
+        $data = $result->fetch_assoc();
+
+        /* Creating a token that is based on the user's IP address and the password. */
+        $token = crypt($password, $_SERVER["REMOTE_ADDR"]);
+        return json_encode(["user" => $data, "token" => $token]);
+    }
+
     /**
      * It generates a GUID, removes the curly braces, inserts it into a database, and returns the GUID
      * 
@@ -100,7 +162,7 @@ class Authentication
         $guid = str_ireplace("-", "", $guid);
 
         /* Preparing the SQL statement. */
-        $sql = "INSERT INTO `invites`(`org`, `code`) VALUES ('?','?')";
+        $sql = "INSERT INTO `invites`(`org`, `code`) VALUES (?,?)";
         $stmt = $this->connection->conn->prepare($sql);
 
         /* Checking if the statement is bound to the parameters. */
@@ -125,7 +187,7 @@ class Authentication
      * 
      * @return string|null a string or null.
      */
-    function Register(string $username, string $password, string $code): string|null
+    function Register(string $username, string $password, string $code): string | null
     {
         /* Checking if the invite code is valid. */
         $sql = "SELECT org FROM invites WHERE code = ? LIMIT 1";
@@ -179,7 +241,7 @@ class Authentication
     function RegisterStaff(string $username, string $password, string $first, string $last,  string $code): string|null
     {
         /* Checking if the invite code is valid. */
-        $sql = "SELECT COUNT FROM invites WHERE code = ? LIMIT 1";
+        $sql = "SELECT id FROM invites WHERE code = ? LIMIT 1";
         $stmt = $this->connection->conn->prepare($sql);
         if (!$stmt->bind_param("s", $code)) {
             return json_encode(["error" => $stmt->error]);
@@ -187,14 +249,15 @@ class Authentication
         if (!$stmt->execute()) {
             return json_encode(["error" => $stmt->error]);
         }
-        if ($stmt->num_rows() == 0) {
+        $result = $stmt->get_result();
+        if ($result->num_rows  == 0) {
             return json_encode(["error" => "No invite found!"]);
         }
 
         /* Inserting the username, password, first name, and last name into the staff table. */
-        $sql = "INSERT INTO `staff` (`username`, `password`, `first_name`, `last_name`) VALUES ('?', '?', '?', '?')";
+        $sql = "INSERT INTO `staff` (`username`, `password`, `first_name`, `last_name`) VALUES (?, ?, ?, ?)";
         $stmt = $this->connection->conn->prepare($sql);
-        if (!$stmt->bind_param("sss", $username, $password, $first, $last)) {
+        if (!$stmt->bind_param("ssss", $username, crypt($password, $this->salt), $first, $last)) {
             return json_encode(["error" => $stmt->error]);
         }
         if (!$stmt->execute()) {
