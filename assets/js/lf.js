@@ -2,4 +2,4 @@ console.info("This is a %cLFInteractive%c Website made by %cDrew Chase", "color:
 console.info("If you're seeing this your a nerd just like me.")
 console.info("Check me out at %chttps://lfinteractive.net", "color:#4bce97; font-weight: 900")
 
-$("footer .year").html(new Date().getFullYear())
+$("footer .year")[0].outerHTML = new Date().getFullYear();
