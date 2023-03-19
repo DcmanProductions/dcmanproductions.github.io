@@ -1,5 +1,18 @@
 footer {
+    text-align: center;
     text-transform: uppercase;
+    padding: 3rem 0;
+}
+
+footer .copy, footer a {
     opacity: .5;
-    padding: 3rem;
+    transition: opacity 200ms;
+}
+
+footer .row {
+    padding-top: 1rem;
+}
+
+footer a:hover {
+    opacity: 1;
 }
