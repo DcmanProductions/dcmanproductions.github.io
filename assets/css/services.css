@@ -7,8 +7,8 @@ section h2 {
 }
 
 section {
-    padding: 0 !important;
-    margin: 2rem !important;
+    padding: 2rem 0 !important;
+    margin: 0 2rem !important;
 }
 
 #web-design>*, #branding>*, #marketing>* {
