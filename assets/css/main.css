@@ -11,7 +11,14 @@ body {
     background-color: var(--bg);
     margin: 0;
     padding: 0;
+    position: relative;
 }
+
+::-moz-selection, ::selection {
+    color: var(--bg);
+    background: var(--primary);
+}
+
 
 .col, .row, .center {
     display: flex;
@@ -59,7 +66,7 @@ p.error {
     text-decoration: underline;
 }
 
-.no-select {
+.no-select, img, .btn, a, toggle {
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -67,12 +74,11 @@ p.error {
 
 section:not(#landing) {
     position: relative;
-    padding: 7rem 0;
-    margin: 7rem 0;
-    opacity: 0;
-    transform: translateY(50px);
+    padding: 10rem 0;
     transition: opacity, transform;
     transition-duration: 500ms;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 section[loaded] {
@@ -90,4 +96,20 @@ section[loaded] {
     font-size: 15rem;
     opacity: .03;
     top: -10%;
+    z-index: -1;
+}
+.separator{
+    margin: 0 1rem;
+}
+
+.separator.line{
+    background-color: white;
+    width: 1px;
+}
+.separator.dot{
+    background-color: white;
+    aspect-ratio: 1/1;
+    width: 5px;
+    margin: auto 1rem;
+    border-radius: 100px;
 }
