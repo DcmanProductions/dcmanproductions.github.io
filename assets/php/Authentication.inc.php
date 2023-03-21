@@ -110,7 +110,7 @@ class Authentication
         }
         $result = $stmt->get_result();
         if ($result->num_rows <= 0) {
-            return json_encode(["error" => "No users found!"]);
+            return json_encode(["error" => "Invalid username or password!"]);
         }
         /* Checking if the password is correct. */
         $data = $result->fetch_assoc();
@@ -125,10 +125,10 @@ class Authentication
     function StaffLogin(string $username, string $password): string
     {
         /* Hashing the password with the salt and then comparing it to the hash in the database. */
-        $password = crypt($password, $this->salt);
+        $enc = crypt($password, $this->salt);
         $sql = "SELECT * FROM staff WHERE username = ? AND password = ? LIMIT 1";
         $stmt = $this->connection->conn->prepare($sql);
-        if (!$stmt->bind_param("ss", $username, $password)) {
+        if (!$stmt->bind_param("ss", $username, $enc)) {
             return json_encode(["error" => $stmt->error]);
         }
         /* Checking if the statement executed successfully. If it did not, it returns a JSON string with the error. */
@@ -137,13 +137,15 @@ class Authentication
         }
         $result = $stmt->get_result();
         if ($result->num_rows <= 0) {
-            return json_encode(["error" => "No users found!"]);
+            return json_encode(["error" => "Invalid username or password!"]);
         }
         $data = $result->fetch_assoc();
 
         /* Creating a token that is based on the user's IP address and the password. */
-        $token = crypt($password, $_SERVER["REMOTE_ADDR"]);
-        return json_encode(["user" => $data, "token" => $token]);
+        $ip = $_SERVER["REMOTE_ADDR"];
+        $token = crypt($enc, $ip);
+        return json_encode(["username" => $data["username"], "first_name" => $data["first_name"], "last_name" => $data["last_name"], "token" => $token]);
+        // return json_encode(["user" => $data, "token" => $token, "ip"=>$ip]);
     }
 
     /**
@@ -236,9 +238,9 @@ class Authentication
      * @param string last The Last name of the user
      * @param string code The invite code
      * 
-     * @return string|null a string or null.
+     * @return string a message or error.
      */
-    function RegisterStaff(string $username, string $password, string $first, string $last,  string $code): string|null
+    function RegisterStaff(string $username, string $password, string $first, string $last,  string $code): string
     {
         /* Checking if the invite code is valid. */
         $sql = "SELECT id FROM invites WHERE code = ? LIMIT 1";
@@ -257,7 +259,8 @@ class Authentication
         /* Inserting the username, password, first name, and last name into the staff table. */
         $sql = "INSERT INTO `staff` (`username`, `password`, `first_name`, `last_name`) VALUES (?, ?, ?, ?)";
         $stmt = $this->connection->conn->prepare($sql);
-        if (!$stmt->bind_param("ssss", $username, crypt($password, $this->salt), $first, $last)) {
+        $encrypted_password = crypt($password, $this->salt);
+        if (!$stmt->bind_param("ssss", $username, $encrypted_password, $first, $last)) {
             return json_encode(["error" => $stmt->error]);
         }
         if (!$stmt->execute()) {
@@ -265,7 +268,7 @@ class Authentication
         }
 
         /* Deleting the invite code from the database. */
-        $sql = "DELETE FROM `invites` WHERE `code` = '?'";
+        $sql = "DELETE FROM `invites` WHERE `code` = ?";
         $stmt = $this->connection->conn->prepare($sql);
         if (!$stmt->bind_param("s", $code)) {
             return json_encode(["error" => $stmt->error]);
@@ -273,5 +276,7 @@ class Authentication
         if (!$stmt->execute()) {
             return json_encode(["error" => $stmt->error]);
         }
+
+        return json_encode(["message" => "Staff registered successfully!"]);
     }
 }
