@@ -38,10 +38,15 @@ class Quote
     function GetRequests(): string
     {
         $sql = "SELECT * FROM `quotes`";
-        $stmt = $this->conn->conn->prepare($sql);
-        if (!$stmt->execute()) {
-            return json_encode(["error" => $stmt->error]);
+        $query = $this->conn->conn->query($sql);
+
+        $items = array();
+        if ($query && $query->num_rows > 0) {
+            while ($result = $query->fetch_assoc()) {
+                array_push($items, $result);
+            }
         }
-        return json_encode($stmt->get_result()->fetch_array());
+
+        return json_encode($items);
     }
 }
