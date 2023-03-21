@@ -54,7 +54,6 @@
     <!-- JS Scripts -->
     <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/footer.php";    ?>
 
-    <script src="/assets/js/min/client-portal.min.js"></script>
 </body>
 
 </html>
