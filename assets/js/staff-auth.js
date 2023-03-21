@@ -1,12 +1,50 @@
 (() => {
+    $("input[type=password]").attr('password', true)
+    $("toggle#show-password-toggle").click(e => {
+        $("input[password]").attr('type', $(e.target).attr('value') != "true" ? "password" : "text")
+    })
+    $("form#staff-registration-form.form input#password").keyup(validateForm)
+    $("form#staff-registration-form.form input#confirm-password").keyup(validateForm)
+    function validateForm() {
+        if ($("input#password").val() != $("input#confirm-password").val()) {
+            $("p.error").html("Passwords must match!")
+            $("input#password").addClass("error")
+            $("input#confirm-password").addClass("error")
+            return false
+        } else {
+            $("input#password").removeClass("error")
+            $("input#confirm-password").removeClass("error")
+            $("p.error").html("")
+            return true
+        }
+    }
     $("form#staff-registration-form.form .btn.primary").click(async () => {
-        let ok = await register($("form#staff-registration-form.form")[0])
-        if (ok) {
+        $("p.error").html("")
+        if (validateForm()) {
+            let response = await register($("form#staff-registration-form.form")[0])
+            if (response.successful) {
+                window.location.href = "/staff-portal"
+            } else {
+                $("p.error").html(response.message);
+            }
+        }
+    })
+
+    $("#login-form .btn.primary").click(async () => {
+        $("p.error").html("")
+        $("#login-form .btn.primary").attr('disabled', "true")
+        let username = $("#login-form input#username").val();
+        let password = $("#login-form input#password").val();
+        let remember = $("#login-form toggle#remember-me-toggle").attr('value') == "true"
+        let response = await login(username, password, remember)
+        if (response.successful) {
             window.location.href = "/staff-portal"
+        } else {
+            $("p.error").html(response.message)
         }
-        else {
-            window.location.href = "/error?c=500"
-        }
+        setTimeout(() => {
+            $("#login-form .btn.primary").attr('disabled', null)
+        }, 2 * 1000)
     })
 })();
 /**
@@ -22,12 +60,21 @@ async function register(form) {
         let json = await response.json();
         if (json["error"] == null) {
             await login(data["email"], data['password'], false)
-            return true;
+            return {
+                successful: true,
+                message: ""
+            };
         } else {
-            alert(json["error"]);
+            return {
+                successful: false,
+                message: json["error"]
+            };
         }
     }
-    return false;
+    return {
+        successful: true,
+        message: ""
+    };;
 }
 /**
  * It takes a username, password, and a boolean value, and sends a POST request to a PHP script, which
@@ -46,12 +93,26 @@ async function login(username, password, remember) {
         if (json["error"] == null) {
             let token = json["token"];
             if (remember) {
-                document.cookie = `auth_username=${username}; expires=${new Date(3000).toUTCString()};path=/`
-                document.cookie = `auth_token=${token}; expires=${new Date(3000).toUTCString()}; path=/`
+                let expires = new Date(3000, 0).toUTCString();
+                document.cookie = `auth_username=${username};expires='${expires}';path=/`
+                document.cookie = `auth_token=${token};expires='${expires}'; path=/`
             } else {
                 document.cookie = `auth_username=${username}; path=/`
                 document.cookie = `auth_token=${token}; path=/`
             }
+            return {
+                successful: true,
+                message: ""
+            };
         }
+        return {
+            successful: false,
+            message: json["error"]
+        };
     }
+}
+
+function Logout() {
+    document.cookie = `auth_username=; expires=${new Date(2000).toUTCString()};path=/`
+    document.cookie = `auth_token=; expires=${new Date(2000).toUTCString()}; path=/`
 }
