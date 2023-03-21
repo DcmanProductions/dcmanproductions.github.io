@@ -1,5 +1,14 @@
 <!-- A LFInteractive Project -->
 
+<?php
+require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/Authentication.inc.php";
+$auth = new Authentication("lfinteractive");
+$loginData = $auth->StaffLoginCookies();
+$data = json_decode($loginData, true);
+if (!isset($data["error"])) {
+    header('location: /staff-portal');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,8 +69,6 @@
     <!-- JS Scripts -->
     <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/footer.php";    ?>
 
-    <script src="/assets/js/min/staff-auth.min.js"></script>
-    <script src="/assets/js/min/client-portal.min.js"></script>
 </body>
 
 </html>
