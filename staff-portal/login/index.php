@@ -1,5 +1,14 @@
 <!-- A LFInteractive Project -->
 
+<?php
+require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/Authentication.inc.php";
+$auth = new Authentication("lfinteractive");
+$loginData = $auth->StaffLoginCookies();
+$data = json_decode($loginData, true);
+if (!isset($data["error"])) {
+    header('location: /staff-portal');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,10 +43,10 @@
     ?>
     <main>
         <div class="center">
-            <div id="login-form" class="form col">
+            <form id="login-form" class="form col">
                 <h3>Staff Login</h3>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" autocomplete="email" placeholder="john.doe@example.com">
+                <label for="username">Email</label>
+                <input type="email" id="username" name="username" autocomplete="email" placeholder="john.doe@example.com">
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" autocomplete="current-password" placeholder="*************">
                 <div class="row">
@@ -47,14 +56,13 @@
                 <p>New staff, <a href="/staff-portal/register/">register here</a></p>
                 <p class="error"></p>
                 <div class="btn primary">Login</div>
-            </div>
+            </form>
         </div>
     </main>
 
     <!-- JS Scripts -->
     <?php include_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/footer.php";    ?>
 
-    <script src="/assets/js/min/client-portal.min.js"></script>
 </body>
 
 </html>
