@@ -32,3 +32,9 @@ a:hover {
     filter: brightness(.9);
     transform: scale(1.01);
 }
+
+.btn[disabled]{
+    cursor: not-allowed;
+    
+    filter:brightness(.5);
+}
