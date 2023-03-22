@@ -145,7 +145,6 @@ class Authentication
         $ip = $_SERVER["REMOTE_ADDR"];
         $token = crypt($enc, $ip);
         return json_encode(["username" => $data["username"], "first_name" => $data["first_name"], "last_name" => $data["last_name"], "token" => $token]);
-        // return json_encode(["user" => $data, "token" => $token, "ip"=>$ip]);
     }
 
     /**
@@ -226,6 +225,11 @@ class Authentication
         if (!$stmt->execute()) {
             return json_encode(["error" => $stmt->error]);
         }
+
+        $this->connection->conn->query("INSERT INTO `page-views`(`org`) VALUES ('$org')");
+        $this->connection->conn->query("INSERT INTO `profits`(`org`) VALUES ('$org')");
+        
+        return json_encode(["message" => "Staff registered successfully!"]);
     }
     /**
      * It takes in a username, password, first name, last name, and invite code, and if the invite code
