@@ -2,12 +2,12 @@
     let borderWidth = 3
     let color = "#40ffaf";
 
-    new Chart($("#page-views")[0], {
+    let pageViewChart = new Chart($("#page-views")[0], {
         type: "bar",
         maintainAspectRatio: false,
         responsive: true,
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: months,
             datasets: [
                 {
                     label: "Page Views",
@@ -32,12 +32,12 @@
             }
         }
     })
-    new Chart($("#profit")[0], {
+    let profitChart = new Chart($("#profit")[0], {
         type: "bar",
         maintainAspectRatio: false,
         responsive: true,
         data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: months,
             datasets: [
 
                 {
@@ -63,5 +63,18 @@
             }
         }
     })
+
+
+    function resizeChart() {
+        let pageViewChartContext = $("#page-views")[0].getContext('2d')
+        let profitChartContext = $("#profit")[0].getContext('2d')
+        pageViewChartContext.canvas.height = $("#page-view-container")[0].clientHeight;
+        pageViewChartContext.canvas.width = $("#page-view-container")[0].clientWidth;
+        profitChartContext.canvas.height = $("#profit-container")[0].clientHeight;
+        profitChartContext.canvas.width = $("#profit-container")[0].clientWidth;
+    }
+
+    $(window).resize(resizeChart)
+    resizeChart()
 
 })()
