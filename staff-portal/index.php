@@ -48,17 +48,22 @@ $quotes = json_decode($quote->GetRequests(), true);
     include_once $_SERVER['DOCUMENT_ROOT'] . "/assets/php/nav.php";
 
     $page = json_decode(GetPageView("lfinteractive"), true);
-
+    $months = "[";
     $val = "[";
     for ($i = 1; $i <= 12; $i++) {
         $date = new DateTime("$i/01/2023");
         $month = strtolower($date->format("F"));
         $val .= $page[$month] . ", ";
+        $month = $date->format("M");
+        $months .= "\"$month\",";
     }
     $val .= "]";
+    $months .= "]";
 
-    echo "<script>
+    echo "
+    <script>
     let pageViews = $val;
+    let months = $months;
     
     </script>";
     ?>
@@ -67,11 +72,11 @@ $quotes = json_decode($quote->GetRequests(), true);
 
         <section id="data">
             <div class="watermark">Data</div>
-            <div class="row">
-                <div id="page-view-container">
+            <div id="data-container">
+                <div id="page-view-container" class="graph-container">
                     <canvas id="page-views"></canvas>
                 </div>
-                <div id="profit-container">
+                <div id="profit-container" class="graph-container">
                     <canvas id="profit"></canvas>
                 </div>
             </div>
