@@ -3,22 +3,14 @@ main {
 }
 
 #data{
-    height: 50vh;
-    min-height: 400px;
 }
-#data > .row{
-    height: 100%;
-    flex-wrap: wrap;
-}
-#data > .row > div{
-    height: 100%;
-    max-width: 100vw;
-    width: calc(50% - 4rem);
-    min-width: 500px;
-    margin: 0 2rem;
+#data #data-container{
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap !important;
+    width: 100%;
+}
+#data .graph-container{
+    width: 100%;
+    min-width: 500px;
 }
 
 
