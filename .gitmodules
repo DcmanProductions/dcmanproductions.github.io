@@ -1,3 +1,6 @@
 [submodule "assets/libraries/stripe"]
 	path = assets/libraries/stripe
 	url = https://github.com/stripe/stripe-php
+[submodule "assets/libraries/hashids"]
+	path = assets/libraries/hashids
+	url = https://github.com/vinkla/hashids.git
