@@ -4,3 +4,6 @@
 [submodule "assets/libraries/hashids"]
 	path = assets/libraries/hashids
 	url = https://github.com/vinkla/hashids.git
+[submodule "assets/libraries/PHPMailer"]
+	path = assets/libraries/PHPMailer
+	url = https://github.com/PHPMailer/PHPMailer.git
