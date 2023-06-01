@@ -2,6 +2,7 @@
 
 <?php
 require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/Authentication.inc.php";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/assets/php/hashids.inc.php";
 
 
 $auth = new Authentication("lfinteractive");
@@ -91,19 +92,9 @@ $quotes = json_decode($quote->GetRequests(), true);
             }
             foreach ($quotes as $item) {
             ?>
-                <div class="quick-item quote" tabindex="0">
+                <div class="quick-item quote">
                     <span class="name"> <?php echo $item["org"]; ?> </span>
-                    <div class="btn primary add-btn" title="Generate invite code"> <i class="fa fa-plus"></i> </div>
-                    <div class="btn secondary more-btn"> <i class="fa fa-ellipsis"></i> </div>
-                    <div class="extra center">
-                        <div class="col">
-                            <p>Name: <b><?php echo $item["fullname"]; ?></b></p>
-                            <p>Email: <b><a href="mailto:<?php echo $item["email"]; ?>"><?php echo $item["email"]; ?></a></b></p>
-                            <p>Phone Number: <b><?php echo preg_replace('~.*(\d{3})[^\d]{0,7}(\d{3})[^\d]{0,7}(\d{4}).*~', '($1) $2-$3', $item["phone"]); ?></b></p>
-                            <p>Date Requested: <b><?php echo date("l, F dS, Y \a\\t h:i A", strtotime($item["date_requested"])); ?></b></p>
-                        </div>
-
-                    </div>
+                    <a href="/staff-portal/quote.php?id=<?php echo $hashids->encode($item["id"]); ?>" class="btn secondary more-btn"> <i class="fa fa-ellipsis"></i> </a>
                 </div>
             <?php
             }

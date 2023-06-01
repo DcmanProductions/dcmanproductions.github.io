@@ -2,7 +2,7 @@
     let borderWidth = 3
     let color = "#40ffaf";
 
-    let pageViewChart = new Chart($("#page-views")[0], {
+    new Chart($("#page-views")[0], {
         type: "bar",
         maintainAspectRatio: false,
         responsive: true,
@@ -32,7 +32,7 @@
             }
         }
     })
-    let profitChart = new Chart($("#profit")[0], {
+    new Chart($("#profit")[0], {
         type: "bar",
         maintainAspectRatio: false,
         responsive: true,

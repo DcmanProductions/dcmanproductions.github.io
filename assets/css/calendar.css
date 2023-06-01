@@ -1,0 +1,37 @@
+.calendar {
+    max-width: 600px;
+    margin: auto;
+}
+
+.calendar .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.calendar table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.calendar th {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar td {
+    padding: 10px;
+    text-align: center;
+}
+
+.calendar .today {
+    border-radius: 100px;
+    background-color: #f2f2f246;
+}
+
+.calendar .event {
+    background-color: #ffd9b3;
+}

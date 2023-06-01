@@ -49,4 +49,27 @@ class Quote
 
         return json_encode($items);
     }
+
+
+    /**
+     * It takes an integer as a parameter, and returns a string
+     * 
+     * @param int id The id of the quote request
+     * 
+     * @return string A JSON string.
+     */
+    function GetRequest(int $id): string
+    {
+        $sql = "SELECT * FROM `quotes` WHERE `id`=? LIMIT 1";
+        $stmt = $this->conn->conn->prepare($sql);
+
+        if ($stmt->bind_param("s", $id)) {
+            if ($stmt->execute()) {
+                $result = $stmt->get_result()->fetch_assoc();
+                return json_encode($result);
+            }
+        }
+
+        return json_encode(["error" => "No quote request found with id of $id"]);
+    }
 }

@@ -4,10 +4,4 @@
         if (element.attr('disabled') != null) return;
         element.attr('value', element.attr('value') != "true")
     })
-    $(".btn").click(e => {
-        if ($(e.target).attr('disabled') != null) {
-            e.preventDefaults();
-            e.stopPropagation();
-        }
-    })
 })()

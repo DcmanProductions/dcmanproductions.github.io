@@ -26,12 +26,13 @@
     $page = 0;
     include_once $_SERVER['DOCUMENT_ROOT'] . "/assets/php/nav.php";
     ?>
+
     <section id="landing" class="col">
         <h1>LfInteractive</h1>
         <h2>bring your brand to the age of the internet</h2>
         <div id="landing-cta" class="row">
             <a href="#contact-us" class="btn primary" title="Scroll to the 'Get a quote' section">Get Started</a>
-            <a href="/clients" class="btn secondary" title="Go to the client page">Our Client List</a>
+            <a href="/clients" class="btn secondary" title="Go to the client page" style="display:none">Our Client List</a>
         </div>
         <img src="/assets/img/scroll-indicator.svg" alt="" id="scroll-indicator" title="Scroll to content">
     </section>
@@ -118,7 +119,7 @@
     </section>
 
 
-    <section id="reviews" class="row">
+    <section id="reviews" class="row" style="display:none;">
         <div class="watermark">reviews</div>
         <div class="review-container">
             <div class="reviews-slider row">

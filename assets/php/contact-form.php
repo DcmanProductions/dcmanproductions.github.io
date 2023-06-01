@@ -22,4 +22,4 @@
     </div>
 </section>
 
-<script src="/assets/js/min/quote.min.js"></script>
+<script src="/assets/js/min/contact-us.min.js"></script>

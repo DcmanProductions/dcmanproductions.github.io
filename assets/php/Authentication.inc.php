@@ -178,6 +178,25 @@ class Authentication
         /* Returning a JSON string with the code. */
         return json_encode(["code" => $guid]);
     }
+
+    function CheckInviteExists(string $org): string
+    {
+        $sql = "SELECT `code` FROM `invites` WHERE `org`=?";
+        $stmt = $this->connection->conn->prepare($sql);
+        if ($stmt->bind_param("s", $org)) {
+            if ($stmt->execute()) {
+                    $result = $stmt->get_result()->fetch_assoc();
+                    if($result != null)
+                    {
+                        $result = array_values($result)[0];
+                        return json_encode(["exists" => true, "code"=>$result]);
+                    }
+            }
+        }
+
+        return json_encode(["exists" => false]);
+    }
+
     /**
      * It takes a username, password, and invite code, and if the invite code is valid, it creates a
      * new user with the given username and password, and deletes the invite code
@@ -228,7 +247,7 @@ class Authentication
 
         $this->connection->conn->query("INSERT INTO `page-views`(`org`) VALUES ('$org')");
         $this->connection->conn->query("INSERT INTO `profits`(`org`) VALUES ('$org')");
-        
+
         return json_encode(["message" => "Staff registered successfully!"]);
     }
     /**

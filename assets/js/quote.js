@@ -1,35 +1,33 @@
 (() => {
-    $("#contact-us .form input").keyup(e => {
-        if (e.originalEvent.key == "Enter")
-            $("#contact-us .form #submit-quote.btn").click();
+    $("button#generate-token").click(async e => {
+        let code = await GenerateToken()
+        $("#invite-code").html(code);
+        $(e.target).attr('disabled', true)
+
     })
-    $("#contact-us .form input[required]").keyup(e => {
-        let ele = $(e.target)
-        if (ele.hasClass("error") && ele.val() != "") {
-            ele.removeClass('error')
-        }
-        if (ele.val() == "") {
-            ele.addClass('error')
-        }
-    })
-    $("#contact-us .form #submit-quote.btn").click(async () => {
-        let send = true;
-        $("#contact-us .form input[required]").each((index, element) => {
-            $(element).removeClass('error')
-            if ($(element).val() == "") {
-                $(element).addClass('error')
-                send = false;
-            }
-        })
-        if (send) {
-            let data = new FormData($("#contact-us .form")[0])
-            let response = await fetch("/assets/php/quote.php", { method: "POST", body: data });
-            if (response.ok) {
-                let json = await response.json();
-                if (json["message"] != null) {
-                    window.location.href = "/thank-you.php";
-                }
-            }
+    $("#invite-code").click(e => {
+        let ele = $(e.target);
+        if (ele.attr('disabled') != null)
+            return;
+            let code = ele.html();
+        if (code != "") {
+            ele.attr('disabled', true)
+            CopyInviteCode(code)
+            ele.css("--animation-speed", "3s")
+            ele.css("--animation-play-state", "running")
+            setTimeout(() => {
+                ele.css("--animation-play-state", "paused")
+                ele.css("--animation-speed", "0s")
+                ele.attr('disabled', null)
+            }, 3000)
         }
     })
-})();
+    function CopyInviteCode(code) {
+        navigator.clipboard.writeText(`https://lfinteractive.net/client-portal/register?tok=${code}`)
+    }
+    async function GenerateToken()
+    {
+        let response = await $.post("/assets/php/auth.php?c=client&m=invite&s=lfinteractive", {org: org});
+        return response["code"];
+    }
+})()

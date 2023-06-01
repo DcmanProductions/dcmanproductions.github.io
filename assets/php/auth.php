@@ -5,7 +5,7 @@ if (isset($_GET["s"])) {
     $source = $_GET['s'];
     $auth = new Authentication($source);
     if (isset($_GET["c"])) {
-        if ($_GET["c"] == "customer") {
+        if ($_GET["c"] == "client") {
             if (isset($_GET["m"])) {
                 $method = $_GET['m'];
                 if ($method == "login") {
@@ -22,6 +22,8 @@ if (isset($_GET["s"])) {
                 } else if ($method == "invite") {
                     if (isset($_POST["org"])) {
                         die($auth->GenerateInviteCode($_POST['org']));
+                    } else if (isset($_GET["org"])) {
+                        die($auth->CheckInviteExists($_GET["org"]));
                     }
                 }
             }

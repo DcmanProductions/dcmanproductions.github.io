@@ -293,6 +293,11 @@
         font-weight: 900;
     }
 
+
+    nav[collapsed=true] #brand, nav #brand {
+        top: 10px;
+    }
+
 }
 
 @media (max-width: 730px) {

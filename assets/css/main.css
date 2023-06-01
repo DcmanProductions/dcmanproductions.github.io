@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+main {
+    margin: 220px 0;
+}
+
 :root {
     --primary: #40ffaf;
     --bg: #0f0f0f;
@@ -98,15 +102,17 @@ section[loaded] {
     top: -10%;
     z-index: -1;
 }
-.separator{
+
+.separator {
     margin: 0 1rem;
 }
 
-.separator.line{
+.separator.line {
     background-color: white;
     width: 1px;
 }
-.separator.dot{
+
+.separator.dot {
     background-color: white;
     aspect-ratio: 1/1;
     width: 5px;

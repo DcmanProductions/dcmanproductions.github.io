@@ -121,6 +121,7 @@ nav[collapsed=true] #brand {
     left: 16%;
     z-index: 1;
     max-height: 75px;
+    top: 60px;
 }
 
 
