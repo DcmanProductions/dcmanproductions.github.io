@@ -1,0 +1,83 @@
+.client {
+    position: relative;
+    margin: 4rem;
+    border-radius: 92px;
+    transition: scale 200ms;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.client .content {
+    padding-left: 7rem;
+    padding-right: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 92px;
+    transition: backdrop-filter 200ms, background 200ms;
+}
+
+.client .client-profile {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    transform: translate(-10%, -10%);
+    border-radius: 100px;
+    box-shadow: 3px 3px 6px 0px #000;
+}
+
+.client .client-banner {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    
+}
+
+.client p.description {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    height: 170px;
+}
+
+.client p.title {
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.client .buttons {
+    width: 33%;
+}
+
+.client .btn {
+    width: 100%;
+    width: 33%;
+}
+
+.client:hover {
+    cursor: pointer;
+    scale: 1.01;
+}
+.client:hover .content {
+    backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#maine-adventures.client {
+    background-image: url('/assets/img/clients/maine-adventures-banner.png');
+}
+
+#blackhat-hunting.client {
+    background-image: url('/assets/img/clients/blackhat-hunting-banner.png');
+}
