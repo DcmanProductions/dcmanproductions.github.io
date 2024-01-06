@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://lfinteractive.net</loc>
+		<priority>1.00</priority>
+	</url>
+	<url>
+		<loc>https://lfinteractive.net/client-portal</loc>
+		<priority>0.80</priority>
+	</url>
+	<url>
+		<loc>https://lfinteractive.net/clients</loc>
+		<priority>0.90</priority>
+	</url>
+	<url>
+		<loc>https://lfinteractive.net/services</loc>
+		<priority>0.90</priority>
+	</url>
+</urlset>
