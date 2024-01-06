@@ -19,7 +19,7 @@ $data = json_decode($loginData, true);
     <a title="Go Home" href="/" id="brand"><img src="/assets/img/logo.svg" alt=""></a>
     <div id="nav-items" class="row">
         <a href="/" class="nav-item" <?php if ($page == 0) echo "selected"; ?> title="Go Home">Home</a>
-        <a href="/clients" class="nav-item" <?php if ($page == 1) echo "selected"; ?> title="Go to the client page" style="display:none !important">Our Work</a>
+        <a href="/clients" class="nav-item" <?php if ($page == 1) echo "selected"; ?> title="Go to the client page">Our Clients</a>
         <a href="/services" class="nav-item" <?php if ($page == 2) echo "selected"; ?> title="Go to the services page">Services</a>
     </div>
     <div id="nav-buttons">
