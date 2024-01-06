@@ -14,7 +14,8 @@
     <link rel="stylesheet" href="/assets/css/min/nav.min.css">
     <link rel="stylesheet" href="/assets/css/min/links.min.css">
     <link rel="stylesheet" href="/assets/css/min/home.min.css">
-
+    <link rel="shortcut icon" href="/assets/img/logo.svg" type="image/x-icon">
+ 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/assets/libraries/fontawesome/css/all.min.css" media="print" onload="this.media='all'">
     <!-- jQuery -->
@@ -32,7 +33,7 @@
         <h2>bring your brand to the age of the internet</h2>
         <div id="landing-cta" class="row">
             <a href="#contact-us" class="btn primary" title="Scroll to the 'Get a quote' section">Get Started</a>
-            <a href="/clients" class="btn secondary" title="Go to the client page" style="display:none">Our Client List</a>
+            <a href="/clients" class="btn secondary" title="Go to the client page">Our Client List</a>
         </div>
         <img src="/assets/img/scroll-indicator.svg" alt="" id="scroll-indicator" title="Scroll to content">
     </section>
@@ -119,45 +120,20 @@
     </section>
 
 
-    <section id="reviews" class="row" style="display:none;">
+    <section id="reviews" class="row">
         <div class="watermark">reviews</div>
         <div class="review-container">
             <div class="reviews-slider row">
-                <?php
-                for ($i = 0; $i < 30; $i++) {
-                    echo '<div class="col review">
-                    <h3>Site #' . $i . '</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur. Quis enim sit in eget commodo leo. Purus vestibulum semper ac id. Non penatibus mi diam sit ridiculus. Amet ut id commodo purus urna sed condimentum sodales arcu. Purus tortor feugiat sapien morbi.</p>
-                    <div class="review-score">';
-                    $num = rand(2, 5);
-                    for ($j = 0; $j < $num; $j++) {
-                        if ($j == $num - 1) {
-                            $choice = rand(0, 1);
-                            switch ($choice) {
-                                case 0:
-                                    echo '<span class="review-pill full"></span>';
-                                    break;
-                                case 1:
-                                    echo '<span class="review-pill half"></span>';
-                                    break;
-                            }
-                        } else
-                            echo '<span class="review-pill full"></span>';
-                    }
-
-                    for ($j = $num; $j < 5; $j++) {
-                        echo '<span class="review-pill empty"></span>';
-                    }
-
-                    echo '
+                <div class="col review">
+                    <h3>Maine Adventures</h3>
+                    <p>The website was more than I ever could have asked for. Drew created an entire booking and payment system, and a dashboard to easily manage my business! I would strongly recommend to anyone looking to make their business look and feel more professional</p>
+                    <div class="review-score"><span class="review-pill full"></span><span class="review-pill full"></span><span class="review-pill full"></span><span class="review-pill full"></span><span class="review-pill full"></span>
                     </div>
                     <div class="row" id="review-buttons">
-                    <a href="#" class="btn primary">Visit Site</a>
-                    <a href="#" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
+                        <a href="https://maineadventures.org" class="btn primary">Visit Site</a>
+                        <a href="/clients/#maine-adventures" class="btn secondary" title="Learn more about how we handle web design">Learn More</a>
                     </div>
-                    </div>';
-                }
-                ?>
+                </div>
             </div>
         </div>
     </section>
